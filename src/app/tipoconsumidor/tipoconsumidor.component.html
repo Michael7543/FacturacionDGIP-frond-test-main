@@ -1,0 +1,134 @@
+<!--* TABLA DE DATOS -->
+<div class="container card scalein animation-duration-1000">
+  <h2>REGISTROS CONSUMIDOR</h2>
+  <p-table class="table__content shadow-6 m-3 surface-card" #dtc2 [value]="listado" dataKey="id" [rows]="10" id="season-tble"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[3, 6, 10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
+    [globalFilterFields]="['idTipoConsumidor','nombreTconsumidor','descTconsumidor','estadoTconsumidor','idUsuarioTconsumidor','fechaTconsumidor']"
+    [tableStyle]="{ 'min-width': '75rem' }">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between">
+        <span class="p-input-icon-left mb-2 md:mb-0">
+          <i class="pi pi-search"></i>
+          <input pInputText type="search" (input)="dtc2.filterGlobal(getEventValue($event),'contains')"
+            placeholder="Buscar" />
+        </span>
+        <button pButton pRipple label="Agregar" icon="pi pi-plus" class="p-button-success mr-2"
+          style="margin-left: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+          <button pButton pRipple label="Exportar" icon="pi pi-upload" class="p-button-help" (click)="exportToExcel()" style="margin-left: 20px;"></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción
+          <p-columnFilter type="text" field="descTconsumidor" display="menu"></p-columnFilter>
+        </th>
+        <th>Estado
+          <p-columnFilter type="text" field="estadoTconsumidor" display="menu"></p-columnFilter>
+        </th>
+        <th>Fecha
+          <p-columnFilter type="date" field="fechaTconsumidor | date" display="menu"></p-columnFilter>
+        </th>
+        <th>ID Usuario</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-consumidor let-rowIndex="rowIndex">
+
+      <tr>
+        <td>{{ consumidor.idTipoConsumidor }}
+        </td>
+        <td>{{ consumidor.nombreTconsumidor }}</td>
+        <td>{{ consumidor.descTconsumidor }}</td>
+        <td>{{ consumidor.estadoTconsumidor }}</td>
+        <td>{{ consumidor.fechaTconsumidor | date:'short'}}</td>
+        <td>{{ consumidor.idUsuarioTconsumidor }}</td>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" style="background-color: rgb(196, 8, 8);" (click)="eliminarTipoConsumidor(consumidor.idTipoConsumidor)"></button>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No se han encontrado resultados</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-- Tabla formulario -->
+
+<!-- Button trigger modal -->
+
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Agregar
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos Consumidor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="ConsumidorForm.reset()"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" [formGroup]="ConsumidorForm" (ngSubmit)=" agregarTipoConsumidor(); ConsumidorForm.reset()">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Nombre</span>
+              <input type="text" formControlName="nombreTconsumidor" name="nombreTconsumidor"
+                placeholder="nombre" required>
+              <div class="text-danger"
+                *ngIf="ConsumidorForm.get('nombreTconsumidor')?.hasError('required') && ConsumidorForm.get('nombreTconsumidor')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Descripción:</span>
+              <input type="text" formControlName="descTconsumidor" name="descTconsumidor"
+                placeholder="Descripción" required>
+              <div class="text-danger"
+                *ngIf="ConsumidorForm.get('descTconsumidor')?.hasError('required') && ConsumidorForm.get('descTconsumidor')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Estado</span>
+              <input type="text" formControlName="estadoTconsumidor" name="estadoTconsumidor" placeholder="Estado"
+                required>
+              <div class="text-danger"
+                *ngIf="ConsumidorForm.get('estadoTconsumidor')?.hasError('required') && ConsumidorForm.get('estadoTconsumidor')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Fecha</span>
+              <input type="date" formControlName="fechaTconsumidor" name="fechaTconsumidor" placeholder="Fecha"
+                required>
+              <div class="text-danger"
+                *ngIf="ConsumidorForm.get('fechaTconsumidor')?.hasError('required') && ConsumidorForm.get('fechaTconsumidor')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">idUsuarioTconsumidor</span>
+              <input type="number" formControlName="idUsuarioTconsumidor" name="idUsuarioTconsumidor"
+                placeholder="idUsuarioTconsumidor" required>
+              <div class="text-danger"
+                *ngIf="ConsumidorForm.get('idUsuarioTconsumidor')?.hasError('required') && ConsumidorForm.get('idUsuarioTconsumidor')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="ConsumidorForm.reset()" data-bs-dismiss="modal">Cerrar</button>
+              <button style="margin-left: 9px; background-color: rgb(33, 162, 7);" type="submit"
+                class="btn btn-secondary">Guardar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

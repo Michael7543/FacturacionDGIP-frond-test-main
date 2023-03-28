@@ -1,0 +1,244 @@
+<!-- 
+<p-divider align="center" type="dashed">
+  <b><p-image
+          src="data:image/png;base64,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"
+          alt="Image" width="100"></p-image>
+  </b>
+</p-divider>
+
+<section class="header-section">
+  <div class="center-div">
+      <h1 class="font-weight-bold">ESCUELA POLITÉCNICA NACIONAL</h1>
+  </div>
+</section> -->
+
+<!-- <div class="centrado">
+  <p-card [style]="{'width': '70rem', 'margin-bottom': '2em'}">
+      <div>
+          <form id="form" (submit)="cedula(id.value, year.value, num.value)">
+              <div class="col-lg-4 col-md-12 col-12">
+                  <div class="input-group mb-4">
+
+                      <label for="">Cedula: </label>
+                      <input #id type="number" pInputText placeholder="Ingresa la cedula">
+                      
+                      
+                      <select #id type="number" pInputText placeholder="Ingresa la cedula">
+                          <option value="0101827806">ABAD MERCHAN</option>
+                          <option value="0502951403">ABAD TORRES</option>
+                          <option value="1725022329">ACEVEDO REINOSO</option>
+                          <option value="1712622164">ACEVEDO TAPIA</option>
+                      </select>
+
+                      <label for="">Año: </label>
+                      <input #year type="number" pInputText placeholder="Ingresa el año">
+                      
+
+                      <select #year type="number" pInputText placeholder="Ingresa el año">
+                          <option value="2022">2022</option>
+                          <option value="2021">2021</option>
+                          <option value="2020">2020</option>
+                          <option value="2015">2015</option>
+
+                      </select>
+                      
+
+                      <label for="">Id: </label>
+                      <select #num type="text" pInputText placeholder="#">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                      </select>
+
+                  </div><br>
+                  <button pButton type="submit" label="Buscar" class="input-group-text2"></button>
+
+              </div>
+          </form>
+      </div>
+
+
+  </p-card><br>
+</div> -->
+
+<div class="container card scalein animation-duration-1000">
+  <h2>Tarjetas</h2>
+  <p-table class="table__content shadow-6 m-3 surface-card" #dt [value]="listadotarjeta" dataKey="id" [rows]="10" id="season-tble"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[2, 5, 10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
+    [globalFilterFields]="['idtarjeta','nombreTarjeta','descTarjeta','stateTarjeta','dateTarjeta','idUsurTarjeta']"
+    [tableStyle]="{ 'min-width': '75rem' }">
+
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between">
+        <span class="p-input-icon-left mb-2 md:mb-0">
+          <i class="pi pi-search"></i>
+          <input pInputText type="search" (input)="dt.filterGlobal(getEventValue($event),'contains')"
+            placeholder="Buscar" />
+        </span>
+        <button pButton pRipple label="Agregar" icon="pi pi-plus" class="p-button-success mr-2"  style="margin-left: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+        <button pButton pRipple label="Exportar" icon="pi pi-upload" class="p-button-help" (click)="exportToExcel()" style="margin-left: 20px;"></button>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID<p-columnFilter type="text" field="idTarjeta" display="menu"></p-columnFilter></th>
+        <th>Nombre<p-columnFilter type="text" field="nombreTarjeta" display="menu"></p-columnFilter>
+        <th>Descripción<p-columnFilter type="text" field="descTarjeta" display="menu"></p-columnFilter></th>
+        <th>Estado<p-columnFilter type="text" field="stateTarjeta" display="menu"></p-columnFilter></th>
+        <th>Fecha<p-columnFilter type="text" field="dateTarjeta" display="menu"></p-columnFilter></th>
+        <th>ID Usuario<p-columnFilter type="text" field="idUsurTarjeta" display="menu"></p-columnFilter></th>
+        <th>Acciones</th>
+
+      </tr>
+      <!-- <tr>
+              <th><p-columnFilter type="text" field="nombreTarjeta"></p-columnFilter></th>
+              <th><p-columnFilter type="text" field="descTarjeta"></p-columnFilter></th>
+              <th><p-columnFilter type="text" field="stateTarjeta"></p-columnFilter></th>
+              <th><p-columnFilter type="text" field="dateTarjeta"></p-columnFilter></th>
+              <th><p-columnFilter type="text" field="idUsurTarjeta"></p-columnFilter></th>
+          </tr> -->
+    </ng-template>
+
+
+    <ng-template pTemplate="body" let-tarjeta>
+      <tr class="tablas">
+        <td>{{ tarjeta.idTarjeta }}</td>
+        <td>{{ tarjeta.nombreTarjeta }}</td>
+        <td>{{ tarjeta.descTarjeta }}</td>
+        <td>{{ tarjeta.stateTarjeta }}</td>
+        <td>{{ tarjeta.dateTarjeta | date:'short' }}</td>
+        <td>{{ tarjeta.idUsurTarjeta }}</td>
+        <td><button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+            style="background-color: rgb(196, 8, 8);" (click)="eliminarTarjeta(tarjeta.idTarjeta)"></button></td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        En total hay {{listadotarjeta ? listadotarjeta.length : 0 }} entradas.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<!-- <section class="footer-section">
+<div class="center-div">
+  <p class="font-weight-bold">Copyright 2023</p>
+</div>
+</section> -->
+
+<!-- 
+<div class="container card scalein animation-duration-1000">
+<h2>REGISTROS</h2>
+<p-table class="table__content shadow-6 m-3 surface-card" #dt [value]="consumidor" dataKey="id" [rows]="4"
+[showCurrentPageReport]="true" [rowsPerPageOptions]="[2, 5, 10, 25, 50]" [paginator]="true"
+currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
+    [globalFilterFields]="['idtarjeta','nombreTarjeta','descTarjeta','stateTarjeta','dateTarjeta','idUsurTarjeta']"
+[tableStyle]="{ 'min-width': '75rem' }">
+
+<ng-template pTemplate="header">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Descripción
+      <p-columnFilter type="text" field="descTconsumidor" display="menu"></p-columnFilter>
+    </th>
+    <th>Estado
+      <p-columnFilter type="text" field="estadoTconsumidor" display="menu"></p-columnFilter>
+    </th>
+    <th>Fecha
+      <p-columnFilter type="text" field="fechaTconsumidor" display="menu"></p-columnFilter>
+    </th>
+    <th>ID Usuario</th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-consumidor let-rowIndex="rowIndex">
+
+  <tr>
+    <td>{{ consumidor.idTipoConsumidor }}
+    </td>
+    <td>{{ consumidor.nombreTconsumidor }}</td>
+    <td>{{ consumidor.descTconsumidor }}</td>
+    <td>{{ consumidor.estadoTconsumidor }}</td>
+    <td>{{ consumidor.fechaTconsumidor }}</td>
+    <td>{{ consumidor.idUsuarioTconsumidor }}</td>
+  </tr>
+</ng-template>
+<ng-template pTemplate="emptymessage">
+  <tr>
+    <td colspan="5">No se han encontrado resultados</td>
+  </tr>
+</ng-template>
+</p-table>
+</div> -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos Tarjeta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="TarjetaForm.reset()"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" [formGroup]="TarjetaForm" (ngSubmit)="agregarTarjeta(); TarjetaForm.reset()">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Nombre</span>
+              <input type="text" formControlName="nombreTarjeta" name="nombreTarjeta" placeholder="nombre de la tarjeta"
+                required>
+              <div class="text-danger"
+                *ngIf="TarjetaForm.get('nombreTarjeta')?.hasError('required') && TarjetaForm.get('nombreTarjeta')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Descripción:</span>
+              <input type="text" formControlName="descTarjeta" name="descTarjeta" placeholder="Descripción tarjeta" required>
+              <div class="text-danger"
+                *ngIf="TarjetaForm.get('descTarjeta')?.hasError('required') && TarjetaForm.get('descTarjeta')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Estado </span>
+              <input type="text" formControlName="stateTarjeta" name="stateTarjeta" placeholder="estado" required>
+              <div class="text-danger"
+                *ngIf="TarjetaForm.get('stateTarjeta')?.hasError('required') && TarjetaForm.get('stateTarjeta')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Fecha</span>
+              <input type="datetime-local" formControlName="dateTarjeta" name="dateTarjeta" placeholder="Partida nc" required>
+              <div class="text-danger"
+                *ngIf="TarjetaForm.get('dateTarjeta')?.hasError('required') && TarjetaForm.get(' dateTarjeta')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">ID Usuario</span>
+              <input type="text" formControlName="idUsurTarjeta" name="idUsurTarjeta" placeholder="Id" required>
+              <div class="text-danger"
+                *ngIf="TarjetaForm.get('idUsurTarjeta')?.hasError('required') && TarjetaForm.get('idUsurTarjeta')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+        
+            <div class="mb-3">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="TarjetaForm.reset()">Cerrar</button>
+              <button style="margin-left: 9px; background-color: rgb(33, 162, 7);" type="submit"
+                class="btn btn-secondary " >Guardar</button>
+              
+            </div>
+          </div>
+        </form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+

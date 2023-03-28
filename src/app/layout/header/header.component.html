@@ -1,0 +1,75 @@
+<head>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo__content">
+      <div class="logo">
+        <img style="width: 40px;" src=".../../assets/logo.png" alt="">
+        <div class="logo__name">
+          Facturacion EPN
+        </div>
+      </div>
+      <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav__list">
+      <li>
+        <a routerLink="/tarjeta" data-bs-toggle="tooltip" data-bs-placement="right" title="Tarjeta">
+          <i class="pi pi-credit-card"></i>
+          <span class="links__name">Tarjetas</span>
+        </a>
+
+      </li>
+      <li>
+        <a routerLink="/bancos" data-bs-toggle="tooltip" data-bs-placement="right" title="Bancos">
+          <i class='bx bxs-bank'></i>
+          <span class="links__name">Bancos</span>
+        </a>
+
+      </li>
+      <li>
+        <a routerLink="/tipoconcepto" data-bs-toggle="tooltip" data-bs-placement="right" title="Concepto">
+          <i class='bx bx-book-content'></i>
+          <span class="links__name">Concepto</span>
+        </a>
+
+      </li>
+      <li>
+        <a routerLink="/tipoconsumidor" data-bs-toggle="tooltip" data-bs-placement="right" title="Consumidor">
+          <i class='bx bxs-user-rectangle'></i>
+          <span class="links__name">Consumidor</span>
+        </a>
+
+      </li>
+      <li>
+        <a routerLink="/centro_costo" data-bs-toggle="tooltip" data-bs-placement="right" title="Centro Costo">
+          <i class='bx bx-building-house'></i>
+          <span class="links__name">Centro Costo</span>
+        </a>
+
+      </li>
+      <li>
+        <a routerLink="/pagos" data-bs-toggle="tooltip" data-bs-placement="right" title="Forma Pago">
+          <i class='bx bxs-credit-card-alt'></i>
+          <span class="links__name">Forma Pago</span>
+        </a>
+
+      </li>
+    </ul>
+    <div class="profile__content">
+      <div class="profile">
+        <div class="profile__details">
+          <img
+          src="../../../assets/logo.png"
+            alt="">
+          <div class="name__job">
+            <div class="name">Alexander</div>
+            <div class="job">web developer</div>
+          </div>
+        </div>
+        <i class='bx bx-log-out' id="log__out"></i>
+      </div>
+    </div>
+  </div>
+</body>

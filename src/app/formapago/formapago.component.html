@@ -1,0 +1,153 @@
+
+
+
+
+<div class="container card scalein animation-duration-1000">
+    <h2>Forma Pago</h2>
+    <p-table class="table__content shadow-6 m-3 surface-card" #dtc2 [value]="formapago" dataKey="id" [rows]="10" id="season-tble"
+      [showCurrentPageReport]="true" [rowsPerPageOptions]="[2, 5, 10, 25, 50]" [paginator]="true"
+      currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
+      [globalFilterFields]="['idFormaPago','nombreFp','codigoSri','activo','codigoSae','descripcionFp','fechaFp','idUsuarioFp']"
+      [tableStyle]="{ 'min-width': '75rem' }">
+      <ng-template pTemplate="caption">
+        <div class="flex justify-content-between">
+          <span class="p-input-icon-left mb-2 md:mb-0">
+            <i class="pi pi-search"></i>
+            <input pInputText type="search" (input)="dtc2.filterGlobal(getEventValue($event),'contains')"
+              placeholder="Buscar" />
+          </span>
+          <button pButton pRipple label="Agregar" icon="pi pi-plus" class="p-button-success mr-2"  style="margin-left: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+          <button pButton pRipple label="Exportar" icon="pi pi-upload" class="p-button-help" (click)="exportToExcel()" style="margin-left: 20px;"></button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>CodigoSri</th>
+          <th>Estado
+            <p-columnFilter type="text" field="estadoTconsumidor" display="menu"></p-columnFilter>
+          </th>
+          <th>CodigoSae</th>
+          <th>Descripción
+            <p-columnFilter type="text" field="descTconsumidor" display="menu"></p-columnFilter>
+          </th>
+          <th>Fecha
+            <p-columnFilter type="text" field="fechaTconsumidor" display="menu"></p-columnFilter>
+          </th>
+          <th>ID Usuario</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-pago let-rowIndex="rowIndex">
+  
+        <tr>
+          <td>{{ pago.idFormaPago}}</td>
+          <td>{{ pago.nombreFp }}</td>
+          <td>{{ pago.codigoSri }}</td>
+          <td>{{ pago.activo }}</td>
+          <td>{{ pago.codigoSae }}</td>
+          <td>{{ pago.descripcionFp }}</td>
+          <td>
+            {{ pago.fechaFp | date:'short' }}
+          </td>
+          <td>{{ pago.idUsuarioFp }}</td>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" style="background-color: rgb(196, 8, 8);" (click)="eliminarFormaPago(pago.idFormaPago)"></button>
+        
+        </tr>
+      
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">No se han encontrado resultados</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos Forma Pago</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="PagoForm.reset()"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" [formGroup]="PagoForm" (ngSubmit)="agregarFormaPago(); PagoForm.reset()">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Nombre Forma Pago</span>
+              <input type="text" formControlName="nombreFp" name="nombreFp" placeholder="Nombre Forma Pago" required>
+              <div class="text-danger"
+                *ngIf="PagoForm.get('nombreFp')?.hasError('required') && PagoForm.get('nombreFp')?.touched" >
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Codigo SRI:</span>
+              <input type="text" formControlName="codigoSri" name="codigoSri" placeholder="Codigo Sri" required>
+              <div class="text-danger"
+              *ngIf="PagoForm.get('codigoSri')?.hasError('required') && PagoForm.get('codigoSri')?.touched" >
+
+        </div>
+        </div>
+        <div class="input-box">
+          <span class="details">Estado</span>
+          <input type="text" formControlName="activo" name="activo" placeholder="Estado" required>
+          <div class="text-danger"
+          *ngIf="PagoForm.get('activo')?.hasError('required') && PagoForm.get('activo')?.touched" >
+          <span>Este campo es <strong>obligatorio</strong></span>
+        </div>
+        </div>
+        <div class="input-box">
+          <span class="details">Codigo SAE</span>
+          <input type="number" formControlName="codigoSae" name="codigoSae" placeholder="Codigo Sae " required>
+          <div class="text-danger"
+          *ngIf="PagoForm.get('codigoSae')?.hasError('required') && PagoForm.get('codigoSae')?.touched" >
+         
+        </div>
+        </div>
+        <div class="input-box">
+          <span class="details">Descripcion</span>
+          <input type="text" formControlName="descripcionFp" name="descripcionFp" placeholder="Descripcion" required>
+          <div class="text-danger"
+          *ngIf="PagoForm.get('descripcionFp')?.hasError('required') && PagoForm.get('descripcionFp')?.touched" >
+          
+        </div>
+        </div>
+        <div class="input-box">
+         <span class="details">Fecha</span>
+         <input type="datetime-local" formControlName="fechaFp" name="fechaFp" placeholder="Fecha" required>
+         <div class="text-danger"
+         *ngIf="PagoForm.get('fechaFp')?.hasError('required') && PagoForm.get('fechaFp')?.touched" >
+
+       </div>
+       </div>
+       <div class="input-box">
+        <span class="details">ID Usuario</span>
+        <input type="number" formControlName="idUsuarioFp" name="idUsuarioFp" placeholder="Id Usuario" required>
+        <div class="text-danger"
+        *ngIf="PagoForm.get('idUsuarioFp')?.hasError('required') && PagoForm.get('idUsuarioFp')?.touched" >
+        <span>Este campo es <strong>obligatorio</strong></span>
+      </div>
+      </div>
+     <div class="mb-3">
+
+   </div>
+   
+ <div class="modal-footer">
+
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="PagoForm.reset()">Cerrar</button>
+  <button style="margin-left: 9px; background-color: rgb(33, 162, 7);" type="submit"
+    class="btn btn-secondary ">Guardar</button>
+
+ </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+ 

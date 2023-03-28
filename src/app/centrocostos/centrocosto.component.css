@@ -1,0 +1,154 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  }
+  
+  .card__menu {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    background: white;
+  }
+  
+  .menu__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .logo {
+    width: 50px;
+  }
+  
+  .filter__card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .p-field {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    *flex-direction: column;
+    gap: 40px;
+  }
+  
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+  }
+  
+  .table__content {
+    width: 90%;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #d2d2d2, #b0b0b0);
+    box-shadow: 8px 8px 16px #525252,
+      -8px -8px 16px #ffffff;
+  }
+  .container.card.scalein.animation-duration-1000 {
+    border: none;
+  }
+  tr {
+    background: white;
+  }
+  
+  tr:hover {
+    background: rgba(110, 210, 250, 0.808);
+  }
+  
+  input[type="text"] {
+    width: 110%;
+  }
+  
+  input[type="search"] {
+    width: 110%;
+  }
+  
+  .p-inputtext.p-component.p-element {
+    border-radius: 14px;
+    background: linear-gradient(145deg, #f8f8f8, #f8f8f8);
+    box-shadow: 8px 8px 16px #c0bebe,
+      -8px -8px 16px #fdfdfd;
+  }
+  
+  
+  
+  @media (max-width: 480px) {
+    input[type="search"] {
+      width: 180px;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    input[type="search"] {
+      width: 134px;
+    }
+  
+  
+  }
+  
+
+  /* Estilos para el cuerpo del formulario */
+.user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.input-box {
+  flex-basis: calc(50% - 20px);
+  margin-bottom: 20px;
+}
+
+.input-box:last-child {
+  flex-basis: 100%;
+}
+
+.details {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"] {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Estilos para los mensajes de error */
+.text-danger {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Estilos para el botón de enviar */
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}

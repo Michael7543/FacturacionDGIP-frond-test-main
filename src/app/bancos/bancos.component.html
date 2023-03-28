@@ -1,0 +1,338 @@
+<!-- <div class="centrado">
+  <p-card [style]="{ width: '70rem', 'margin-bottom': '2em' }">
+    <p-toolbar styleClass="mb-4 gap-5">
+      <form id="form">
+        <div class="col-lg-4 col-md-12 col-12">
+          <div class="input-group mb-4">
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filterGlobal(getEventValue($event), 'contains')"
+              placeholder="Buscar cualquier campo"
+            />
+            <button
+              pButton
+              type="submit"
+              icon="pi pi-search"
+              class="input-group-text"
+            ></button>
+          </div>
+        </div>
+      </form>
+    </p-toolbar>
+
+    <p-table
+      #dt
+      [value]="banco"
+      [rows]="4"
+      [paginator]="true"
+      [rowsPerPageOptions]="[4, 8, 12]"
+      [globalFilterFields]="[
+      'idBancos',
+      'nombreBancos',
+      'descBancos',
+      'estadoBancos',
+      'fechaTconsumidor',
+      'idUsuarioBancos'
+      ]"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas."
+      [showCurrentPageReport]="true"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <pre class="mt-3">      ID         </pre>
+          </th>
+          <th>
+            <pre class="mt-3">      Nombre         </pre>
+          </th>
+          <th>
+            <pre class="mt-3">      Descripción         </pre>
+          </th>
+          <th>
+            <pre class="mt-3">      Estado       </pre>
+          </th>
+          <th>
+            <pre class="mt-3">      Fecha         </pre>
+          </th>
+        
+          <th>
+            <pre class="mt-3">      ID Usuario          </pre>
+          </th>
+          <th>
+            <pre class="mt-3">Editar</pre>
+          </th>
+          <th>
+            <pre class="mt-3">Borrar</pre>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <p-columnFilter type="text" field="idTipoConcepto"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter
+              type="text"
+              field="nombreTipoConcepto"
+            ></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter
+              type="text"
+              field="descTipoConcepto"
+            ></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="idUnidadTc"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="prtidaNc"></p-columnFilter>
+          </th>
+          <th><p-columnFilter type="text" field="fechaTc"></p-columnFilter></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-bancos>
+        <tr class="tablas">
+          <td>{{ bancos.idBancos }}</td>
+          <td>{{ bancos.nombreBancos }}</td>
+          <td>{{ bancos.descBancos }}</td>
+          <td>{{ bancos.estadoBancos }}</td>
+          <td>{{ bancos.fechaBancos }}</td>
+          <td>{{ bancos.idUsuarioBancos }}</td>
+          <td>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-pencil"
+              class="p-button-rounded p-button-success p-mr-2"
+            ></button>
+          </td>
+          <td>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-danger"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+          En total hay {{ banco ? banco.length : 0 }} entradas.
+        </div>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div> -->
+
+
+<!--* TABLA DE DATOS -->
+<!-- 
+<div class="container card scalein animation-duration-1000">
+  <h2>REGISTROS</h2>
+  <p-table class="table__content shadow-6 m-3 surface-card" #dt2 [value]="banco" dataKey="id" [rows]="4"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[2, 5, 10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros" [globalFilterFields]="[
+'idBancos',
+'nombreBancos',
+'descBancos',
+'estadoBancos',
+'fechaTconsumidor',
+'idUsuarioBancos'
+]" [tableStyle]="{ 'min-width': '75rem' }">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between">
+        <button pButton label="Resetear" class="p-button-outlined btn__clean" icon="pi pi-filter-slash"
+          ></button>
+        <span class="p-input-icon-left mb-2 md:mb-0">
+          <i class="pi pi-search"></i>
+          <input pInputText type="search" (input)="dt2.filterGlobal(getEventValue($event), 'contains')"
+            placeholder="Buscar" />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr> 
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>Fecha</th>
+      <th>ID Usuario</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bancos let-rowIndex="rowIndex">
+      <tr>
+                <td>{{ bancos.idBancos }}</td>
+                <td>{{ bancos.nombreBancos }}</td>
+                <td>{{ bancos.descBancos}}</td>
+                <td> {{ bancos.estadoBancos }}</td>
+                <td> {{ bancos.fechaBancos}}</td>
+                <td>{{ bancos.idUsuarioBancos}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No se han encontrado resultados</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>  -->
+
+
+
+
+<div class="container card scalein animation-duration-1000">
+  <h2>BANCOS</h2>
+  <p-table class="table__content shadow-6 m-3 surface-card" #dtc2 [value]="Banco" dataKey="id" [rows]="10" id="season-tble"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[ 5, 10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros" [globalFilterFields]="[
+   'idBancos',
+   'nombreBancos',
+   'descBancos',
+   'estadoBancos',
+   'fechaBancos',
+   'idUsuarioBancos'
+      ]" [tableStyle]="{ 'min-width': '75rem' }">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between">
+        <span class="p-input-icon-left mb-2 md:mb-0">
+          <i class="pi pi-search"></i>
+          <input pInputText type="search" (input)="dtc2.filterGlobal(getEventValue($event),'contains')"
+            placeholder="Buscar" />
+        </span>
+        <button pButton pRipple label="Agregar" icon="pi pi-plus" class="p-button-success mr-2" style="margin-left: 50px;"
+          data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+          <button pButton pRipple label="Exportar" icon="pi pi-upload" class="p-button-help" (click)="exportToExcel()" style="margin-left: 20px;"></button>
+
+      </div>
+
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID
+          <p-columnFilter type="text" field="idBancos" display="menu"></p-columnFilter>
+        </th>
+        <th>Nombre
+          <p-columnFilter type="text" field="nombreBancos" display="menu"></p-columnFilter>
+        </th>
+        <th>Descripción
+          <p-columnFilter type="text" field="descBancos" display="menu"></p-columnFilter>
+        </th>
+        <th>Estado
+          <p-columnFilter type="text" field="estadoBancos" display="menu"></p-columnFilter>
+        </th>
+
+        <th>Fecha
+          <p-columnFilter type="text" field="fechaBancos" display="menu"></p-columnFilter>
+        </th>
+        <th>ID Usuario
+          <p-columnFilter type="text" field="idUsuarioBancos" display="menu"></p-columnFilter>
+        </th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bancos let-rowIndex="rowIndex">
+
+      <tr>
+        <td>{{ bancos.idBancos }}</td>
+        <td>{{ bancos.nombreBancos }}</td>
+        <td>{{ bancos.descBancos}}</td>
+        <td> {{ bancos.estadoBancos }}</td>
+        <td> {{ bancos.fechaBancos| date:'short'}}</td>
+        <td>{{ bancos.idUsuarioBancos}}</td>
+        <td><button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+            style="background-color: rgb(196, 8, 8);" (click)="eliminarBancoss(bancos.idBancos)"></button></td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No se han encontrado resultados</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<br><br>
+
+<!-- <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()" style="margin-left: 50px;"></button> -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Agregar
+ </button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos Banco</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="BancoForm.reset()"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" [formGroup]="BancoForm" (ngSubmit)=" agregarBancos(); BancoForm.reset()">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Nombre</span>
+              <input type="text" formControlName="nombreBancos" name="nombreBancos"
+                placeholder="nombre del Banco" required>
+              <div class="text-danger"
+                *ngIf="BancoForm.get('nombreBancos')?.hasError('required') && BancoForm.get('nombreBancos')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Descripción:</span>
+              <input type="text" formControlName="descBancos" name="descBancos" placeholder="Descripción "
+                required>
+              <div class="text-danger"
+                *ngIf="BancoForm.get('descBancos')?.hasError('required') && BancoForm.get('descBancos')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Estado</span>
+              <input type="text" formControlName="estadoBancos" name="estadoBancos" placeholder="Estado" required>
+              <div class="text-danger"
+                *ngIf="BancoForm.get('estadoBancos')?.hasError('required') && BancoForm.get('estadoBancos')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">Fecha</span>
+              <input type="datetime-local" formControlName="fechaBancos" name="fechaBancos" placeholder="fechaBancos"
+                required>
+              <div class="text-danger"
+                *ngIf="BancoForm.get('fechaBancos')?.hasError('required') && BancoForm.get('fechaBancos')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="input-box">
+              <span class="details">ID Usuario</span>
+              <input type="number" formControlName="idUsuarioBancos" name="idUsuarioBancos" placeholder="id Usuario Bancos"
+                required>
+              <div class="text-danger"
+                *ngIf="BancoForm.get('idUsuarioBancos')?.hasError('required') && BancoForm.get('idUsuarioBancos')?.touched">
+                <span>Este campo es <strong>obligatorio</strong></span>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="BancoForm.reset()">Cerrar</button>
+              <button style="margin-left: 9px; background-color: rgb(33, 162, 7);" type="submit"
+                class="btn btn-secondary " (click)="openNew()">Guardar</button>
+
+            </div>
+          </div>
+        </form>
+  
+  </div>
+</div>
