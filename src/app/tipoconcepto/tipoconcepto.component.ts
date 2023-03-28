@@ -48,12 +48,10 @@ export class TipoconceptoComponent implements OnInit {
 
   agregarTipoConcepto() {
     let tipoconcepto: TipoConceptoModel = this.TipoconceptoForm.value
- 
     this.tipoconceptoService.createTipoConcepto(tipoconcepto).subscribe(data => {
       this.getTipoConcepto();
     })
     this.getTipoConcepto();
-
   }
 
 

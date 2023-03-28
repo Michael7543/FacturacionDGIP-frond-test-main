@@ -3,6 +3,7 @@ import { TipoconsumidorService } from '../services/tipoconsumidor.service';
 import { MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { ListadoDTO } from 'src/app/Dto/TipoConsumidor.dto';
+import { TipoConsumidorModel } from '../entities/TipoConsumidor';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -46,17 +47,13 @@ export class TipoconsumidorComponent implements OnInit {
   }
 
   agregarTipoConsumidor() {
-    const list: any = {
-      nombreTconsumidor: this.ConsumidorForm.get('nombreTconsumidor')?.value,
-      descTconsumidor: this.ConsumidorForm.get('descTconsumidor')?.value,
-      estadoTconsumidor: this.ConsumidorForm.get('estadoTconsumidor')?.value,
-      fechaTconsumidor: this.ConsumidorForm.get('fechaTconsumidor')?.value,
-      idUsuarioTconsumidor: this.ConsumidorForm.get('idUsuarioTconsumidor')
-        ?.value,
-    };
-    this.tipoconsumidorService.createTipoConsumidor(list).subscribe((data) => {
-      this.getTiposConsumidor();
-    });
+    let tipoConsumidor: TipoConsumidorModel = this.ConsumidorForm.value;
+
+    this.tipoconsumidorService
+      .createTipoConsumidor(tipoConsumidor)
+      .subscribe((data) => {
+        this.getTiposConsumidor();
+      });
   }
 
   eliminarTipoConsumidor(id: number): void {
