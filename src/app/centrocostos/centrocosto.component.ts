@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
+import { CentroCostoModel } from '../entities/CentroCosto';
 
 @Component({
   selector: 'app-centrocos',
@@ -55,7 +56,7 @@ export class CentrocostoComponent implements OnInit {
   }
 
 
-  agregarCentroCosto() {
+ /*  agregarCentroCosto() {
     const list: any = {
       codCentroCosto: this.CentrocostoForm.get('codCentroCosto')?.value,
       nombreCentroCosto: this.CentrocostoForm.get('nombreCentroCosto')?.value,
@@ -70,7 +71,18 @@ export class CentrocostoComponent implements OnInit {
     })
     this.getCentroCosto()
 
-  }
+  } */
+
+
+   agregarCentroCosto() {
+    let Centrocosto: CentroCostoModel = this.CentrocostoForm.value;
+    this.centroCostoService
+      .createCentroCosto(Centrocosto)
+      .subscribe((data) => {
+        this.getCentroCosto();
+      });
+  }  
+  
 
   
   eliminarCentroCosto(id: number): void {

@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { FormaPagoDTO } from '../Dto/FormaPago.dto';
 import { FormapagoService } from '../services/formapago.service';
 import * as XLSX from 'xlsx';
+import { FormaPagoModel } from '../entities/FormaPago';
 
 @Component({
   selector: 'app-formapago',
@@ -47,7 +48,7 @@ export class FormapagoComponent implements OnInit {
     });
   }
 
-  agregarFormaPago() {
+/*   agregarFormaPago() {
     const list: any = {
       nombreFp: this.PagoForm.get('nombreFp')?.value,
       codigoSri: this.PagoForm.get('codigoSri')?.value,
@@ -62,7 +63,18 @@ export class FormapagoComponent implements OnInit {
      this.getListaFPago()
     })
     this.getListaFPago() 
-  }
+  } */
+
+    agregarFormaPago() {
+    let Formapago: FormaPagoModel = this.PagoForm.value;
+
+    this.formapagoService
+      .createFPago(Formapago)
+      .subscribe((data) => {
+        this.getListaFPago();
+      });
+  } 
+
 
 
 

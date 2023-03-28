@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Tarjeta } from '../entities/tarjeta';
+import { Tarjeta, TarjetaModel } from '../entities/tarjeta';
 import { TarjetaHttpServiceService } from '../services/tarjeta-http-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TarjetaDTO } from '../Dto/Tarjeta.dto';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
+import { TipoConsumidorModel } from '../entities/TipoConsumidor';
 
 @Component({
   selector: 'app-tarjeta',
@@ -41,7 +42,7 @@ export class TarjetaComponent implements OnInit {
     });
   }
 
-  agregarTarjeta() {
+/*   agregarTarjeta() {
     const list: any = {
       nombreTarjeta: this.TarjetaForm.get('nombreTarjeta')?.value,
       descTarjeta: this.TarjetaForm.get('descTarjeta')?.value,
@@ -53,6 +54,16 @@ export class TarjetaComponent implements OnInit {
     this.TarjetaHttpServiceService.createTarjeta(list).subscribe(data => {
       this.getTarjeta()
     })
+  } */
+
+  agregarTarjeta() {
+    let Tarjeta: TarjetaModel = this.TarjetaForm.value;
+
+    this.TarjetaHttpServiceService
+      .createTarjeta(Tarjeta)
+      .subscribe((data) => {
+        this.getTarjeta();
+      });
   }
 
 
@@ -84,7 +95,7 @@ export class TarjetaComponent implements OnInit {
   getEventValue($event: any): string {
     return $event.target.value;
   }
-  
+
   name = 'ExcelSheet.xlsx';
   exportToExcel(): void {
     let element = document.getElementById('season-tble');

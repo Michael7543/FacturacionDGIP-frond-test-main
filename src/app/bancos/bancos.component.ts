@@ -7,6 +7,7 @@ import {BancoDto } from '../Dto/Bancos.dto';
  import { VERSION } from '@angular/core';
 import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
+import { BancosModel } from '../entities/Bancos';
 
 @Component({
   selector: 'app-bancos',
@@ -48,7 +49,7 @@ getListaBanco() {
   }
 
 
-   agregarBancos() {
+  /*  agregarBancos() {
      const list: any = {
        nombreBancos: this.BancoForm.get('nombreBancos')?.value,
        descBancos: this.BancoForm.get('descBancos')?.value,
@@ -61,7 +62,17 @@ getListaBanco() {
       this.getListaBanco()
      })
      this.getListaBanco() 
-   }
+   } */
+
+
+    agregarBancos() {
+    let Bancos: BancosModel = this.BancoForm.value;
+    this.BancoService
+      .createBanco(Bancos)
+      .subscribe((data) => {
+        this.getListaBanco();
+      });
+  }   
 
 
 
