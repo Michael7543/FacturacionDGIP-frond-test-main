@@ -41,6 +41,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PickListModule } from 'primeng/picklist';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { MessagesModule } from 'primeng/messages';
+
 
 import { MenuModule } from 'primeng/menu';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
@@ -106,8 +108,9 @@ import { CentrocostoComponent } from './centrocostos/centrocosto.component';
     ButtonModule,
     ScrollPanelModule,
     LayoutModule,
+    FormsModule,
     ReactiveFormsModule,
-    DynamicDialogModule
+    DynamicDialogModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

@@ -10,8 +10,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TarjetaHttpServiceService {
-  
-  private apiUrl = 'http://172.31.203.232:8080/Tarjeta/listTarjeta';
 
   private url = 'http://172.31.203.232:8080/Tarjeta';
 

@@ -92,9 +92,11 @@ input[type="search"] {
     width: 134px;
   }
 
-
 }
 
+.container.card.scalein.animation-duration-1000 {
+  transform: translateX(72px);
+}
 
 /* Formulario Modal */
 

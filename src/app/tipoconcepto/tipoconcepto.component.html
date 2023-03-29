@@ -60,9 +60,10 @@
         <td>{{ tipoconcepto.prtidaNc }}</td>
         <td>{{ tipoconcepto.fechaTc| date:'short' }}</td>
         <td>{{ tipoconcepto.idUsuarioTc }}</td>
-        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning m-2"
+        <td><button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning m-2"
           style="background-color: rgb(196, 8, 8);"
-          (click)="eliminarTipoConcepto(tipoconcepto.idTipoConcepto)"></button>
+          (click)="eliminarTipoConcepto(tipoconcepto.idTipoConcepto)"></button></td>
+       
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
@@ -84,7 +85,7 @@
       </div>
       <div class="modal-body">
         <form action="#" id="miForm" [formGroup]="TipoconceptoForm"
-          (ngSubmit)="agregarTipoConcepto(); TipoconceptoForm.reset()">
+          (ngSubmit)="agregarTipoConcepto(); TipoconceptoForm.reset();">
           <div class="user-details">
             <div class="input-box">
               <span class="details">Nombre</span>
@@ -105,7 +106,7 @@
               </div>
             </div>
             <div class="input-box">
-              <span class="details">idUnidadTc</span>
+              <span class="details">IdUnidadTc</span>
               <input type="number" formControlName="idUnidadTc" name="idUnidadTc" placeholder="id unidad tc" required>
               <div class="text-danger"
                 *ngIf="TipoconceptoForm.get('idUnidadTc')?.hasError('required') && TipoconceptoForm.get('idUnidadTc')?.touched">
@@ -113,7 +114,7 @@
               </div>
             </div>
             <div class="input-box">
-              <span class="details">prtidaNc</span>
+              <span class="details">PartidaNc</span>
               <input type="number" formControlName="prtidaNc" name="prtidaNc" placeholder="Partida nc" required>
               <div class="text-danger"
                 *ngIf="TipoconceptoForm.get('prtidaNc')?.hasError('required') && TipoconceptoForm.get('prtidaNc')?.touched">
@@ -121,7 +122,7 @@
               </div>
             </div>
             <div class="input-box">
-              <span class="details">fecha</span>
+              <span class="details">Fecha</span>
               <input type="datetime-local" formControlName="fechaTc" name="fechaTc" placeholder="fechaTc" required>
               <div class="text-danger"
                 *ngIf="TipoconceptoForm.get('fechaTc')?.hasError('required') && TipoconceptoForm.get('fechaTc')?.touched">
@@ -129,7 +130,7 @@
               </div>
             </div>
             <div class="input-box">
-              <span class="details">idUsuarioTc</span>
+              <span class="details">IdUsuarioTc</span>
               <input type="number" formControlName="idUsuarioTc" name="idUsuarioTc" placeholder="usuariotc" required>
               <div class="text-danger"
                 *ngIf="TipoconceptoForm.get('idUsuarioTc')?.hasError('required') && TipoconceptoForm.get('idUsuarioTc')?.touched">
@@ -141,8 +142,9 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                 (click)="TipoconceptoForm.reset()">Cerrar</button>
+              <p-toast></p-toast>
               <button style="margin-left: 9px; background-color: rgb(33, 162, 7);" type="submit"
-                class="btn btn-secondary">Guardar</button>
+                class="btn btn-secondary" (click)="show()"[disabled]="TipoconceptoForm.invalid">Guardar</button>
             </div>
           </div>
         </form>

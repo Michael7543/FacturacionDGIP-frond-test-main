@@ -142,8 +142,9 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                 (click)="CentrocostoForm.reset()">Cerrar</button>
+                <p-toast></p-toast>
               <button style="margin-left: 9px; background-color: rgb(33, 162, 7);" type="submit"
-                class="btn btn-secondary ">Guardar</button>
+                class="btn btn-secondary" (click)="show()"[disabled]="CentrocostoForm.invalid">Guardar</button>
             </div>
           </div>
         </form>

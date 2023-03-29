@@ -10,7 +10,7 @@ import {BancoDto } from '../Dto/Bancos.dto';
 })
 export class BancosService {
 
-  private apiUrl = 'http://172.31.203.232:8080/bancos/listarBancos';
+
   private api= 'http://172.31.203.232:8080/bancos'
 
   constructor(private http: HttpClient) { }

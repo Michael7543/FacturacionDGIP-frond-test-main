@@ -228,8 +228,9 @@ currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
         
             <div class="mb-3">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="TarjetaForm.reset()">Cerrar</button>
+              <p-toast></p-toast>
               <button style="margin-left: 9px; background-color: rgb(33, 162, 7);" type="submit"
-                class="btn btn-secondary " >Guardar</button>
+                class="btn btn-secondary" (click)="show()" [disabled]="TarjetaForm.invalid" >Guardar</button>
               
             </div>
           </div>

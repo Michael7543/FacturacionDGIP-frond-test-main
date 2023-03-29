@@ -7,6 +7,7 @@ import { FormaPagoDTO } from '../Dto/FormaPago.dto';
 import { FormapagoService } from '../services/formapago.service';
 import * as XLSX from 'xlsx';
 import { FormaPagoModel } from '../entities/FormaPago';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-formapago',
@@ -21,7 +22,7 @@ export class FormapagoComponent implements OnInit {
   PagoForm: FormGroup;
   formapago: FormaPagoDTO[] = []; //poner
 
-  constructor(private formapagoService: FormapagoService, private form: FormBuilder, private router:Router) {
+  constructor(private formapagoService: FormapagoService, private form: FormBuilder, private router:Router,private messageService: MessageService) {
     {
       this.PagoForm = this.form.group({
         nombreFp: ['', Validators.required],
@@ -107,12 +108,48 @@ export class FormapagoComponent implements OnInit {
 
   name = 'ExcelSheet.xlsx';
   exportToExcel(): void {
-    let element = document.getElementById('season-tble');
-    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    const element: HTMLElement | null = document.getElementById('season-tble');
+    if (!element) {
+      console.error('No se ha encontrado el elemento con el ID "season-tble".');
+      return;
+    }
 
+    // Obtener todas las filas de la tabla y convertirlas en una matriz de objetos
+    const rows: HTMLCollectionOf<HTMLTableRowElement> =
+      element.getElementsByTagName('tr');
+    const data: { [key: string]: string }[] = [];
+    for (let i = 0; i < rows.length; i++) {
+      const row: HTMLTableRowElement = rows[i];
+      const cells: HTMLCollectionOf<HTMLTableCellElement> =
+        row.getElementsByTagName('td');
+      const rowData: { [key: string]: string } = {};
+      for (let j = 0; j < cells.length; j++) {
+        if (j !== 8) {
+          // Excluir la tercera columna (por ejemplo)
+          const cell: HTMLTableCellElement = cells[j];
+          const cellValue: string = cell.innerText.trim();
+          rowData[`column${j + 1}`] = cellValue;
+        }
+      }
+      data.push(rowData);
+    }
+
+    // Convertir la matriz de objetos en una hoja de trabajo de Excel
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+
+    // Crear un nuevo libro de trabajo y agregar la hoja de trabajo
     const book: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
 
+    // Escribir el libro de trabajo en un archivo de Excel
     XLSX.writeFile(book, this.name);
+  }
+
+  show() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Correcto',
+      detail: 'Se guardo Correctamente',
+    });
   }
 }

@@ -55,6 +55,7 @@
   box-shadow: 8px 8px 16px #525252,
     -8px -8px 16px #ffffff;
 }
+
 .container.card.scalein.animation-duration-1000 {
   border: none;
 }
@@ -98,8 +99,12 @@ input[type="search"] {
 
 } 
 
+.container.card.scalein.animation-duration-1000 {
+  transform: translateX(72px);
+}
 
 /* Estilos para el cuerpo del formulario */
+
 .user-details {
   display: flex;
   flex-wrap: wrap;

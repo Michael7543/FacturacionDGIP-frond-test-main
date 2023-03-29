@@ -98,6 +98,10 @@ input[type="search"] {
 
 }
 
+
+.container.card.scalein.animation-duration-1000 {
+  transform: translateX(72px);
+}
 /* Estilos para el cuerpo del formulario */
 .user-details {
   display: flex;
