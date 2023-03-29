@@ -12,17 +12,21 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-formapago',
   templateUrl: './formapago.component.html',
-  styleUrls: ['./formapago.component.css']
+  styleUrls: ['./formapago.component.css'],
 })
 export class FormapagoComponent implements OnInit {
-
   items: MenuItem[] = [];
   activeItem!: MenuItem;
   activeItem2!: MenuItem;
   PagoForm: FormGroup;
   formapago: FormaPagoDTO[] = []; //poner
 
-  constructor(private formapagoService: FormapagoService, private form: FormBuilder, private router:Router,private messageService: MessageService) {
+  constructor(
+    private formapagoService: FormapagoService,
+    private form: FormBuilder,
+    private router: Router,
+    private messageService: MessageService
+  ) {
     {
       this.PagoForm = this.form.group({
         nombreFp: ['', Validators.required],
@@ -30,26 +34,24 @@ export class FormapagoComponent implements OnInit {
         activo: ['', Validators.required],
         codigoSae: ['', Validators.required],
         descripcionFp: ['', Validators.required],
-        fechaFp: ['', Validators.required],
+        fechaFp: [ new Date().toISOString().substr(0, 10),
+          Validators.required,],
         idUsuarioFp: ['', Validators.required],
-
-    })
+      });
+    }
   }
-
-
- }
 
   ngOnInit(): void {
     this.getListaFPago();
   }
 
   getListaFPago() {
-    this.formapagoService.getFormaPago().subscribe(data => {
+    this.formapagoService.getFormaPago().subscribe((data) => {
       this.formapago = data;
     });
   }
 
-/*   agregarFormaPago() {
+  /*   agregarFormaPago() {
     const list: any = {
       nombreFp: this.PagoForm.get('nombreFp')?.value,
       codigoSri: this.PagoForm.get('codigoSri')?.value,
@@ -66,18 +68,13 @@ export class FormapagoComponent implements OnInit {
     this.getListaFPago() 
   } */
 
-    agregarFormaPago() {
+  agregarFormaPago() {
     let Formapago: FormaPagoModel = this.PagoForm.value;
 
-    this.formapagoService
-      .createFPago(Formapago)
-      .subscribe((data) => {
-        this.getListaFPago();
-      });
-  } 
-
-
-
+    this.formapagoService.createFPago(Formapago).subscribe((data) => {
+      this.getListaFPago();
+    });
+  }
 
   eliminarFormaPago(id: number): void {
     Swal.fire({
@@ -90,17 +87,15 @@ export class FormapagoComponent implements OnInit {
       confirmButtonText: 'Sí, eliminar',
     }).then((result) => {
       if (result.isConfirmed) {
-    this.formapagoService.eliminarFormaPago(id).subscribe((data) => {
-      if (data && data) {
-        this.formapago = data;
+        this.formapagoService.eliminarFormaPago(id).subscribe((data) => {
+          if (data && data) {
+            this.formapago = data;
+          }
+          this.getListaFPago();
+        });
       }
-      this.getListaFPago();
     });
   }
-  }
-  )
-    }
-
 
   getEventValue($event: any): string {
     return $event.target.value;

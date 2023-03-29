@@ -31,7 +31,8 @@ export class CentrocostoComponent implements OnInit {
         nombreCentroCosto: ['', Validators.required],
         descCentroCosto: ['', Validators.required],
         estadoCentroCosto: ['', Validators.required],
-        fechaCentroCosto: ['', Validators.required],
+        fechaCentroCosto: [ new Date().toISOString().substr(0, 10),
+          Validators.required,],
         idUsuarioCentroCosto: ['', Validators.required],
       })
     }

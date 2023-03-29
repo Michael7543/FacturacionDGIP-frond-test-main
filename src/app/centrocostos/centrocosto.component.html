@@ -1,5 +1,5 @@
 <div class="container card scalein animation-duration-1000">
-  <h2>Centro de Costos</h2>
+  <h2>CENTRO DE COSTOS</h2>
   <p-table class="table__content shadow-6 m-3 surface-card" #dtc [value]="centrocosto" dataKey="id" [rows]="10" id="season-tble"
     [showCurrentPageReport]="true" [rowsPerPageOptions]="[2, 5, 10, 25, 50]" [paginator]="true"
     currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros" [globalFilterFields]="[
@@ -122,7 +122,7 @@
             </div>
             <div class="input-box">
               <span class="details">Fecha</span>
-              <input type="datetime-local" formControlName="fechaCentroCosto" name="fechaCentroCosto"
+              <input type="date" formControlName="fechaCentroCosto" name="fechaCentroCosto"
                 placeholder="Fecha" required>
               <div class="text-danger"
                 *ngIf="CentrocostoForm.get('fechaCentroCosto')?.hasError('required') && CentrocostoForm.get('fechaCentroCosto')?.touched">

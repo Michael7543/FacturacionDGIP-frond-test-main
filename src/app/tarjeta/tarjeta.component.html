@@ -61,7 +61,7 @@
 </div> -->
 
 <div class="container card scalein animation-duration-1000">
-  <h2>Tarjetas</h2>
+  <h2>TARJETAS</h2>
   <p-table class="table__content shadow-6 m-3 surface-card" #dt [value]="listadotarjeta" dataKey="id" [rows]="10" id="season-tble"
     [showCurrentPageReport]="true" [rowsPerPageOptions]="[2, 5, 10, 25, 50]" [paginator]="true"
     currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
@@ -211,7 +211,7 @@ currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
             </div>
             <div class="input-box">
               <span class="details">Fecha</span>
-              <input type="datetime-local" formControlName="dateTarjeta" name="dateTarjeta" placeholder="Partida nc" required>
+              <input type="date" formControlName="dateTarjeta" name="dateTarjeta" placeholder="Partida nc" required>
               <div class="text-danger"
                 *ngIf="TarjetaForm.get('dateTarjeta')?.hasError('required') && TarjetaForm.get(' dateTarjeta')?.touched">
                 <span>Este campo es <strong>obligatorio</strong></span>

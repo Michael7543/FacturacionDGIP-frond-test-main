@@ -19,7 +19,6 @@ export class TipoconsumidorComponent implements OnInit {
   items: MenuItem[] = [];
   activeItem!: MenuItem;
   activeItem2!: MenuItem;
-
   listado: ListadoDTO[] = []; //poner
   ConsumidorForm!: FormGroup;
   constructor(
@@ -55,8 +54,11 @@ export class TipoconsumidorComponent implements OnInit {
             Validators.maxLength(10),
           ],
         ],
-        fechaTconsumidor: ['', Validators.required],
-        idUsuarioTconsumidor: ['', Validators.required],
+        fechaTconsumidor: [
+          new Date().toISOString().substr(0, 10),
+          Validators.required,
+        ],
+        idUsuarioTconsumidor: [1, Validators.required],
       });
     }
   }
@@ -156,5 +158,3 @@ export class TipoconsumidorComponent implements OnInit {
     });
   }
 }
-
-

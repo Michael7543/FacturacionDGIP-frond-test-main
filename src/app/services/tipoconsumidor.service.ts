@@ -1,4 +1,4 @@
-import { TipoConsumidorModel} from 'src/app/entities/TipoConsumidor';
+import { TipoConsumidorModel } from 'src/app/entities/TipoConsumidor';
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -15,19 +15,22 @@ export class TipoconsumidorService {
   constructor(private http: HttpClient) {}
 
   getListado(): Observable<ListadoDTO[]> {
-    return this.http.get<TipoConsumidorModel>('http://172.31.203.232:8080/Cosumidor/listaConsumidor').pipe(
-      map(data => data.listado.map(p => new ListadoDTO(p)))
-    );
+    return this.http
+      .get<TipoConsumidorModel>(
+        'http://172.31.203.232:8080/Cosumidor/listaConsumidor'
+      )
+      .pipe(map((data) => data.listado.map((p) => new ListadoDTO(p))));
   }
 
   eliminarTipoConsumidor(id: number): Observable<ListadoDTO[]> {
-    return this.http.delete<TipoConsumidorModel>('http://172.31.203.232:8080/Cosumidor/eliminarConsumidor/' + id ).pipe(
-      map(data => data.listado)
-    );
-  }
-  
-  createTipoConsumidor(tipoConsumidor: TipoConsumidorModel): Observable<any>{
-    return this.http.post(`${this.apiUrl}/guardaConsumidor`, tipoConsumidor);
+    return this.http
+      .delete<TipoConsumidorModel>(
+        'http://172.31.203.232:8080/Cosumidor/eliminarConsumidor/' + id
+      )
+      .pipe(map((data) => data.listado));
   }
 
+  createTipoConsumidor(tipoConsumidor: TipoConsumidorModel): Observable<any> {
+    return this.http.post(`${this.apiUrl}/guardaConsumidor`, tipoConsumidor);
+  }
 }

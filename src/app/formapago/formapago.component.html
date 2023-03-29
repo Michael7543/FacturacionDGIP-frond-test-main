@@ -3,7 +3,7 @@
 
 
 <div class="container card scalein animation-duration-1000">
-    <h2>Forma Pago</h2>
+    <h2>FORMA PAGO</h2>
     <p-table class="table__content shadow-6 m-3 surface-card" #dtc2 [value]="formapago" dataKey="id" [rows]="10" id="season-tble"
       [showCurrentPageReport]="true" [rowsPerPageOptions]="[2, 5, 10, 25, 50]" [paginator]="true"
       currentPageReportTemplate="Datos {first} a {last} de {totalRecords} registros"
@@ -119,7 +119,7 @@
         </div>
         <div class="input-box">
          <span class="details">Fecha</span>
-         <input type="datetime-local" formControlName="fechaFp" name="fechaFp" placeholder="Fecha" required>
+         <input type="date" formControlName="fechaFp" name="fechaFp" placeholder="Fecha" required>
          <div class="text-danger"
          *ngIf="PagoForm.get('fechaFp')?.hasError('required') && PagoForm.get('fechaFp')?.touched" >
 

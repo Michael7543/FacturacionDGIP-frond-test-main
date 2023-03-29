@@ -29,7 +29,8 @@ export class TipoconceptoComponent implements OnInit {
         descTipoConcepto: ['', Validators.required],
         idUnidadTc: ['', Validators.required],
         prtidaNc: ['', Validators.required],
-        fechaTc: ['', Validators.required],
+        fechaTc: [ new Date().toISOString().substr(0, 10),
+          Validators.required,],
         idUsuarioTc: ['', Validators.required],
 
       })

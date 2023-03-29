@@ -307,7 +307,7 @@
             </div>
             <div class="input-box">
               <span class="details">Fecha</span>
-              <input type="datetime-local" formControlName="fechaBancos" name="fechaBancos" placeholder="fechaBancos"
+              <input type="date" formControlName="fechaBancos" name="fechaBancos" placeholder="fechaBancos"
                 required>
               <div class="text-danger"
                 *ngIf="BancoForm.get('fechaBancos')?.hasError('required') && BancoForm.get('fechaBancos')?.touched">

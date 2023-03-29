@@ -25,7 +25,8 @@ export class TarjetaComponent implements OnInit {
         nombreTarjeta: ['', Validators.required],
         descTarjeta: ['', Validators.required],
         stateTarjeta: ['', Validators.required],
-        dateTarjeta: ['', Validators.required],
+        dateTarjeta: [new Date().toISOString().substr(0, 10),
+          Validators.required,],
         idUsurTarjeta: ['', Validators.required],
 
       })

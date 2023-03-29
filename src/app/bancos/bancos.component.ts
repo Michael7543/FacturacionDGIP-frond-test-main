@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BancosService } from '../services/bancos.service';
-import { MenuItem } from 'primeng/api';
+import { BancosModel } from '../entities/Bancos';
 import { BancoDto } from '../Dto/Bancos.dto';
+import { MenuItem } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VERSION } from '@angular/core';
 import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
-import { BancosModel } from '../entities/Bancos';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -33,7 +33,8 @@ export class BancosComponent implements OnInit {
         nombreBancos: ['', Validators.required],
         descBancos: ['', Validators.required],
         estadoBancos: ['', Validators.required],
-        fechaBancos: ['', Validators.required],
+        fechaBancos: [new Date().toISOString().substr(0, 10),
+          Validators.required,],
         idUsuarioBancos: ['', Validators.required],
       });
     }
@@ -55,6 +56,8 @@ export class BancosComponent implements OnInit {
       this.getListaBanco();
     });
   }
+
+
   eliminarBancoss(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
