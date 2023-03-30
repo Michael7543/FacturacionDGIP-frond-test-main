@@ -42,8 +42,6 @@ import { PickListModule } from 'primeng/picklist';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { MessagesModule } from 'primeng/messages';
-
-
 import { MenuModule } from 'primeng/menu';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -52,7 +50,6 @@ import { TipoconceptoComponent } from './tipoconcepto/tipoconcepto.component';
 import { TipoconsumidorComponent } from './tipoconsumidor/tipoconsumidor.component';
 import { LayoutModule } from './layout/layout.module';
 import { BancosComponent } from './bancos/bancos.component';
-
 import { CentrocostoComponent } from './centrocostos/centrocosto.component';
 
 @NgModule({
